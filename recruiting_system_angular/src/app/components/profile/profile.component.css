@@ -1,0 +1,45 @@
+.container{
+  margin-top: 100px;
+  margin-left: 310px;
+  width:1000px;
+}
+.img-profile{
+    width:250px;
+    height: 200px;
+    display:inline;
+    padding-left: 50px;
+}
+.div1{
+    border-style: solid;
+    border-color: #72B261;
+    border-radius: 10px;
+    border-width: 1px;
+    
+}
+.div2{
+   
+    text-align: left;
+    margin-top: 100px;
+}
+#profile{
+    font-family: "Be Vietnam Pro", Sans-serif;
+    color:#72B261;
+    
+}
+#profile-value
+{
+    opacity: .6;
+}
+#name
+{
+    font-family: "Be Vietnam Pro", Sans-serif;
+    font-size: 19px;
+    font-weight: 700;
+    padding-top: 250px;
+    position: absolute;
+}
+
+  /* ************************************************** */
+  
+  
+  

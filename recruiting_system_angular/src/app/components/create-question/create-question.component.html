@@ -1,0 +1,147 @@
+<div class="container mt-3">
+  <form
+    [formGroup]="createQuestionForm"
+    (submit)="submitForm($event)"
+    class="bg-light p-3"
+  >
+    <p class="fs-5">Create Question</p>
+    <div class="mb-3">
+      <label for="Question" class="form-label">Question</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Question"
+        name="Question"
+        placeholder="Enter your Question here"
+        formControlName="Question"
+      />
+      <ng-container *ngIf="getQuestion.touched">
+        <div class="text-danger" *ngIf="getQuestion.hasError('required')">
+          Oops, This field is required.
+        </div>
+        <div class="text-danger" *ngIf="getQuestion.hasError('minlength')">
+          Oops, Question is invalid. +10 chars letters ..
+        </div>
+      </ng-container>
+    </div>
+    <div class="mb-3">
+      <label for="Answer1" class="form-label">Answer A</label>
+      <input
+        type="text"
+        class="form-control"
+        id="Answer1"
+        name="Answer1"
+        placeholder="Enter Answer1 here"
+        formControlName="Answer1"
+      />
+      <ng-container *ngIf="getAnswer1.touched">
+        <div class="text-danger" *ngIf="getAnswer1.hasError('required')">
+          Oops, This field is required.
+        </div>
+        <div class="text-danger" *ngIf="getAnswer1.hasError('minlength')">
+          Oops, Answer1 is invalid. +10 chars letters ..
+        </div>
+      </ng-container>
+      <div class="mb-3">
+        <label for="Answer2" class="form-label">Answer B</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Answer2"
+          name="Answer2"
+          placeholder="Enter Answer2 here"
+          formControlName="Answer2"
+        />
+        <ng-container *ngIf="getAnswer2.touched">
+          <div class="text-danger" *ngIf="getAnswer2.hasError('required')">
+            Oops, This field is required.
+          </div>
+          <div class="text-danger" *ngIf="getAnswer2.hasError('minlength')">
+            Oops, Answer2 is invalid. +10 chars letters ..
+          </div>
+        </ng-container>
+      </div>
+      <div class="mb-3">
+        <label for="Answer3" class="form-label">Answer C</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Answer3"
+          name="Answer3"
+          placeholder="Enter Answer3 here"
+          formControlName="Answer3"
+        />
+        <ng-container *ngIf="getAnswer1.touched">
+          <div class="text-danger" *ngIf="getAnswer3.hasError('required')">
+            Oops, This field is required.
+          </div>
+          <div class="text-danger" *ngIf="getAnswer3.hasError('minlength')">
+            Oops, Answer3 is invalid. +10 chars letters ..
+          </div>
+        </ng-container>
+      </div>
+      <div class="mb-3">
+        <label for="Answer4" class="form-label">Answer D</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Answer4"
+          name="Answer4"
+          placeholder="Enter Answer4 here"
+          formControlName="Answer4"
+        />
+        <ng-container *ngIf="getAnswer4.touched">
+          <div class="text-danger" *ngIf="getAnswer4.hasError('required')">
+            Oops, This field is required.
+          </div>
+          <div class="text-danger" *ngIf="getAnswer4.hasError('minlength')">
+            Oops, Answer4 is invalid. +10 chars letters ..
+          </div>
+        </ng-container>
+      </div>
+      <div class="mb-3">
+        <label for="Right Answer" class="form-label">Right Answer</label>
+        <!-- <input
+          type="text"
+          class="form-control"
+          id="Right Answer"
+          name="Right Answer"
+          placeholder="Enter Right Answer here"
+          formControlName="RightAnswer"
+        /> -->
+        <select
+          class="form-select"
+          aria-label="Default select example"
+          formControlName="RightAnswer"
+        >
+          <option value="A">A</option>
+          <option value="B">B</option>
+          <option value="C">C</option>
+          <option value="D">D</option>
+        </select>
+        <ng-container *ngIf="getRightAnswer.touched">
+          <div class="text-danger" *ngIf="getRightAnswer.hasError('required')">
+            Oops, This field is required.
+          </div>
+          <div class="text-danger" *ngIf="getRightAnswer.hasError('maxlength')">
+            Oops, Right Answer is invalid. only one char needed..
+          </div>
+        </ng-container>
+      </div>
+      <div class="mb-3">
+        <label for="Details" class="form-label">Details</label>
+        <input
+          type="text"
+          class="form-control"
+          id="Details"
+          name="Details"
+          formControlName="Details"
+        />
+        <div id="" class="form-text"></div>
+      </div>
+      <button type="submit" class="btn">
+        {{ question_id ? "Edit Question" : "Add Question" }}
+      </button>
+    </div>
+  </form>
+</div>

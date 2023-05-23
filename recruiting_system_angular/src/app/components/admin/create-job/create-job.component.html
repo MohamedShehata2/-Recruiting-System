@@ -1,0 +1,87 @@
+<div class="container mt-5">
+  <h1 class="mb-4">Create Job</h1>
+  <ng-container *ngIf="messageError">
+    <div class="alert alert-danger" role="alert">
+      {{ messageError }}
+    </div>
+  </ng-container>
+  <form [formGroup]="jobForm" (submit)="onSubmit($event)">
+    <div class="form-group">
+      <label class="mb-2" for="title">Title:</label>
+      <input
+        formControlName="title"
+        type="text"
+        class="form-control mb-3"
+        id="title"
+        name="title"
+        required
+      />
+    </div>
+    <ng-container *ngIf="title.touched">
+      <div class="text-danger" *ngIf="title.hasError('required')">
+        Oops, This filed is required.
+      </div>
+      <div class="text-danger" *ngIf="title.hasError('minlength')">
+        Oops, title invalid. 10+ chars letters ..
+      </div>
+    </ng-container>
+    <div class="form-group">
+      <label class="mb-2" for="description">Description:</label>
+      <textarea
+        formControlName="description"
+        class="form-control mb-3"
+        id="description"
+        name="description"
+        rows="3"
+        required
+      ></textarea>
+    </div>
+    <ng-container *ngIf="description.touched">
+      <div class="text-danger" *ngIf="description.hasError('required')">
+        Oops, This filed is required.
+      </div>
+      <div class="text-danger" *ngIf="description.hasError('minlength')">
+        Oops, description invalid. 15+ chars letters ..
+      </div>
+    </ng-container>
+    <div class="form-group">
+      <label class="mb-2" for="start_date">Start Date:</label>
+      <input
+        formControlName="start_date"
+        type="date"
+        class="form-control mb-3"
+        id="start_date"
+        name="start_date"
+        required
+      />
+    </div>
+    <ng-container *ngIf="start_date.touched">
+      <div class="text-danger" *ngIf="start_date.hasError('required')">
+        Oops, This filed is required.
+      </div>
+      <div class="text-danger" *ngIf="start_date.hasError('invalidDate')">
+        Oops, start date invalid must be greater than {{ today }}
+      </div>
+    </ng-container>
+    <div class="form-group">
+      <label class="mb-2" for="end_date">End Date:</label>
+      <input
+        formControlName="end_data"
+        type="date"
+        class="form-control mb-3"
+        id="end_date"
+        name="end_date"
+        required
+      />
+    </div>
+    <ng-container *ngIf="end_data.touched">
+      <div class="text-danger" *ngIf="end_data.hasError('required')">
+        Oops, This filed is required.
+      </div>
+      <div class="text-danger" *ngIf="end_data.hasError('invalidDate')">
+        Oops, end date invalid must be greater than {{ today }}
+      </div>
+    </ng-container>
+    <button type="submit" class="btn mt-2">Submit</button>
+  </form>
+</div>

@@ -1,0 +1,67 @@
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-6 col-lg-4">
+      <div class="card">
+        <div class="card-body">
+          <h4 class="card-title text-center mb-4">Login</h4>
+          <ng-container *ngIf="messageError">
+            <div class="alert alert-danger" role="alert">
+              {{ messageError }}
+            </div>
+          </ng-container>
+          <form [formGroup]="loginForm" (submit)="login($event)">
+            <div class="form-group">
+              <label for="username" class="mb-2">Username</label>
+              <input
+                formControlName="username"
+                type="text"
+                class="form-control mb-2"
+                id="username"
+                placeholder="Enter username"
+              />
+            </div>
+            <ng-container *ngIf="username.touched">
+              <div class="text-danger" *ngIf="username.hasError('required')">
+                Oops, This filed is required.
+              </div>
+              <div class="text-danger" *ngIf="username.hasError('pattern')">
+                Oops, Username invalid. 6+ chars letters and digits only..
+              </div>
+            </ng-container>
+            <div class="form-group">
+              <label for="password" class="mb-2">Password</label>
+              <input
+                formControlName="password"
+                type="password"
+                class="form-control mb-2"
+                id="password"
+                placeholder="Password"
+              />
+            </div>
+            <ng-container *ngIf="password.touched">
+              <div class="text-danger" *ngIf="password.hasError('required')">
+                Oops, This filed is required.
+              </div>
+              <div class="text-danger" *ngIf="password.hasError('pattern')">
+                Oops, Weak password. Add digits and uppercase letters.
+              </div>
+            </ng-container>
+            <div class="form-group">
+              <div class="custom-control custom-checkbox">
+                <input
+                  type="checkbox"
+                  class="custom-control-input me-2"
+                  id="remember"
+                />
+                <label class="custom-control-label" for="remember"
+                  >Remember me</label
+                >
+              </div>
+            </div>
+            <button type="submit" class="btn btn-block mt-3">Login</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

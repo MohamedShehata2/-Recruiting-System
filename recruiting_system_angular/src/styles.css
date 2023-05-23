@@ -1,0 +1,41 @@
+/* You can add global styles to this file, and also import other style files */
+/* Globals Vars */
+:root {
+  --green-color: #75b262;
+  --black-color: #262626;
+  --white-color: #f3f3f3;
+  --main-font: "Be Vietnam Pro", sans-serif;
+}
+
+body {
+  font-family: var(--main-font);
+}
+
+/* CSS Loading Spinner */
+.loader {
+  width: 72px;
+  height: 72px;
+  border: 5px solid #fff;
+  border-bottom-color: var(--green-color);
+  border-radius: 50%;
+  display: inline-block;
+  box-sizing: border-box;
+  animation: rotation 1s linear infinite;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+@keyframes rotation {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.my-pagination .ngx-pagination .current {
+  background: var(--green-color) !important;
+}

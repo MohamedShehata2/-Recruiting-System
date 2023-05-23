@@ -1,0 +1,63 @@
+<div class="container mycontainer">
+    <div class=" row justify-content-center">
+    <h1 class="mt-5 mb-3">Choose The Right Answer</h1>
+
+    <form class=" ">
+      <div class="" *ngFor="let item of question; let index = index">
+        <div class="card my-3 ">
+          <div class="card-header header">
+            <h5 class="card-title">{{ index + 1 }}. {{ item.title }}</h5>
+          </div>
+          <div class="card-body">
+            <div class="form-check mx-3" *ngFor="let answer of item.answers">
+              <input
+                class="form-check-input"
+                type="radio"
+                id="{{ answer }}{{ item.id }}"
+                name="{{ item.id }}"
+                value="{{ item.id }}:{{ answer }}"
+                [(ngModel)]="radioSelected[index]"
+                required
+              />
+              <label class="form-check-label" for="{{ answer }}{{ item.id }}">{{
+                answer
+              }}</label>
+            </div>
+          </div>
+        </div>
+      </div>
+      <button class="btn mb-3" (click)="storeCandidate()">Submit</button>
+    </form>
+   </div>
+  </div>
+
+
+<!-- 
+<div class="container">
+  <h1 class="mt-5 mb-3">Multiple Choice Questions</h1>
+  <form>
+    <div *ngFor="let item of question; let index = index">
+      <p>
+        <strong>{{ index + 1 }}. {{ item.title }}</strong>
+      </p>
+      <div class="form-check mx-3" *ngFor="let answer of item.answers">
+        <input
+          class="form-check-input "
+          type="radio"
+          id="{{ answer }}{{ item.id }}"
+          name="{{ item.id }}"
+          value="{{ item.id }}:{{ answer }}"
+          [(ngModel)]="radioSelected[index]"
+          required
+        />
+        <label class="form-check-label" for="{{ answer }}{{ item.id }}">{{
+          answer
+        }}</label>
+      </div>
+      <br />
+    </div>
+    <button class="btn mb-3" (click)="storeCandidate()">
+      Submit
+    </button>
+  </form>
+</div> -->

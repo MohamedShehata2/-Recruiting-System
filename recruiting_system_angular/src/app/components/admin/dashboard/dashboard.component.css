@@ -1,0 +1,13 @@
+.container{
+  color: var(--black-color);
+}
+i {
+  background-color: var(--green-color);
+  color: var(--white-color);
+}
+.iconsName{
+  color: var(--green-color);
+}
+.card{
+  padding: 0;
+}

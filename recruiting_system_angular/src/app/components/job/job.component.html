@@ -1,0 +1,57 @@
+
+  <div class="border w-50 my-5 container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-8 table-responsive">
+        <table class="table table-hover text-center">
+          <thead>
+            <tr>
+              <th class="tableheader">Job</th>
+              <th class="tableheader">Name</th>
+              <th class="tableheader">Start date</th>
+              <th class="tableheader">End Date</th>
+              <th class="tableheader"></th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let item of jobs | paginate: { itemsPerPage: 5, currentPage: current } ; index as index" class="table-row">
+              <td>{{ item.id }}</td>
+              <td>{{ item.title }}</td>
+              <td><i class=""></i> {{ item.start_date }}</td>
+              <td><i class=""></i> {{ item.end_data }}</td>
+              <td><a class="btn " [routerLink]="['/apply',item.id]">Apply</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="current = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+
+  <!-- <div class="border w-50 my-5 container">
+    <div class="row justify-content-center mt-5">
+      <div class="col-8 table-responsive">
+        <table class="table  table-hover text-center">
+          <thead>
+            <tr>
+              <th>Job</th>
+              <th>Name</th>
+              <th>Start date</th>
+              <th>End Date</th>
+              <th> </th>
+            </tr>
+          </thead>
+          <tbody >
+            <tr *ngFor="let item of job | paginate: { itemsPerPage: 5, currentPage: current } ; index as index">
+              <td >{{ index+1 }}</td>
+              <td >{{ item.title  }}</td>
+              <td >{{item.start_date}}  </td>
+              <td >{{item.end_data}}  </td>
+              <td ><a class="btn " [routerLink]="['/apply',item.id]">Apply</a></td>
+            </tr>
+          </tbody>
+        </table>
+        <pagination-controls (pageChange)="current = $event"></pagination-controls>
+      </div>
+    </div>
+  </div>
+   -->

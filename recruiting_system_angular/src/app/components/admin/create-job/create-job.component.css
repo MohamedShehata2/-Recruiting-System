@@ -1,0 +1,13 @@
+h1 {
+  color: var(--green-color);
+}
+[type="submit"] {
+  color: var(--white-color);
+  background-color: var(--green-color);
+}
+textarea{
+  resize: none;
+}
+/* .card {
+  box-shadow: 2px 2px 50px rgba(0, 0, 0, 0.3);
+} */

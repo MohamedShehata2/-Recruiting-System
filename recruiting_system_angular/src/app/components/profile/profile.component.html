@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <app-mysidebar></app-mysidebar>
+      <div class="content">
+
+<div class="container text-center">
+
+<div class="row div1">
+    <div class="col d-flex justify-content-around">
+        <img [src]='users.img' class="mt-5 img-profile" alt=""><br>
+        <p id="name" class="mt-5"> <b>{{users.name}}</b></p>
+
+    </div>
+    <div id="profile" class="col d-flex justify-content-between div2">
+        EMAIL <br><br>
+        USERNAME <br><br>
+        PHONE<br><br>
+        ADDRESS<br><br><br>
+        STATE<br><br>
+        CITY<br><br>
+        CREATED-AT<br><br>
+    </div>
+    <div id="profile-value" class="col d-flex justify-content-between div2">
+        {{users.email}}<br><br>
+        {{users.username}}<br><br>
+        {{users.phone}}<br><br>
+        {{users.address}}<br><br>
+        {{users.state}}<br><br>
+        {{users.city}} <br><br>
+        {{users.created_at}}<br><br>
+    </div>
+</div>
+</div>
+</div>
+
+</body>
+</html>
+<!-- //////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////// -->
+

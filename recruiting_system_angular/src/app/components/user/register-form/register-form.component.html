@@ -1,0 +1,191 @@
+<div class="container my-4">
+  <h2 class="text-center my-3">Sign up Form</h2>
+  <!--Show Loading Spinner When data is submitting -->
+  <span *ngIf="isLoading" class="loader"></span>
+
+  <form
+    *ngIf="!isLoading"
+    [formGroup]="reactiveForm"
+    (ngSubmit)="onSubmit()"
+    class="mx-auto w-50"
+  >
+    <div class="mb-3">
+      <label for="name" class="form-label mb-0">Full Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="name"
+        formControlName="name"
+      />
+      <!-- Errors Messages -->
+      <small
+        *ngIf="
+          !reactiveForm.get('name').valid &&
+          reactiveForm.get('name').errors['required'] == true &&
+          reactiveForm.get('name').touched
+        "
+        class="text-danger"
+        >The name is required</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="email" class="form-label mb-0">Email address</label>
+      <input
+        type="email"
+        class="form-control"
+        id="email"
+        formControlName="email"
+      />
+      <!-- Errors Messages -->
+      <small
+        *ngIf="
+          !reactiveForm.get('email').valid &&
+          reactiveForm.get('email').errors['required'] == true &&
+          reactiveForm.get('email').touched
+        "
+        class="text-danger"
+        >The email is required</small
+      >
+      <small
+        *ngIf="
+          !reactiveForm.get('email').valid &&
+          reactiveForm.get('email').errors['email'] == true &&
+          reactiveForm.get('email').touched
+        "
+        class="text-danger"
+        >The email is not valid</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="username" class="form-label mb-0">User Name</label>
+      <input
+        type="text"
+        class="form-control"
+        id="username"
+        formControlName="username"
+      />
+      <small
+        *ngIf="
+          !reactiveForm.get('username').valid &&
+          reactiveForm.get('username').errors?.['required'] &&
+          reactiveForm.get('username').touched
+        "
+        class="text-danger"
+        >The username is required</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="password" class="form-label mb-0">Password</label>
+      <input
+        type="password"
+        class="form-control"
+        id="password"
+        formControlName="password"
+      />
+      <!-- Errors Messages -->
+      <small
+        *ngIf="
+          !reactiveForm.get('password').valid &&
+          reactiveForm.get('password').errors?.['required'] &&
+          reactiveForm.get('password').touched
+        "
+        class="text-danger"
+        >The password is required</small
+      >
+      <small
+        *ngIf="
+          !reactiveForm.get('password').valid &&
+          reactiveForm.get('password').touched &&
+          reactiveForm.get('password').errors?.['minlength']
+
+        "
+        class="text-danger"
+      >
+        min length for password is
+        {{
+          reactiveForm.get("password").errors["minlength"].requiredLength
+        }}</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="phone" class="form-label mb-0">Phone</label>
+      <input
+        type="text"
+        class="form-control"
+        id="phone"
+        formControlName="phone"
+      />
+      <small
+        *ngIf="
+          !reactiveForm.get('phone').valid &&
+          reactiveForm.get('phone').errors?.['required']  &&
+          reactiveForm.get('phone').touched
+        "
+        class="text-danger"
+        >The phone is required</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="state" class="form-label mb-0">State</label>
+      <input
+        type="text"
+        class="form-control"
+        id="state"
+        formControlName="state"
+      />
+      <small
+        *ngIf="
+          !reactiveForm.get('state').valid &&
+          reactiveForm.get('state').errors?.['required'] &&
+          reactiveForm.get('state').touched
+        "
+        class="text-danger"
+        >The state is required</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="city" class="form-label mb-0">City</label>
+      <input
+        type="text"
+        class="form-control"
+        id="city"
+        formControlName="city"
+      />
+      <small
+        *ngIf="
+          !reactiveForm.get('city').valid &&
+          reactiveForm.get('city').errors?.['required'] &&
+          reactiveForm.get('city').touched
+        "
+        class="text-danger"
+        >The city is required</small
+      >
+    </div>
+    <div class="mb-3">
+      <label for="address" class="form-label mb-0">Address</label>
+      <input
+        type="text"
+        class="form-control"
+        id="address"
+        formControlName="address"
+      />
+      <small
+        *ngIf="
+          !reactiveForm.get('address').valid &&
+          reactiveForm.get('address').errors?.['required']  &&
+          reactiveForm.get('address').touched
+        "
+        class="text-danger"
+        >The address is required</small
+      >
+    </div>
+
+    <button
+      [disabled]="reactiveForm.status === 'INVALID'"
+      type="submit"
+      class="btn btn-primary"
+    >
+      Sign up
+    </button>
+  </form>
+</div>

@@ -1,0 +1,166 @@
+<div class="container">
+  <h1 class="text-center display-4 my-4">All Jobs</h1>
+
+  <!-- Showing Delete Message -->
+  <div
+    *ngIf="deleteMessage"
+    class="alert alert-danger my-4 mx-auto w-50 text-center"
+    role="alert"
+  >
+    {{ deleteMessage }}
+  </div>
+
+  <!-- Showing Update Message -->
+  <div
+    *ngIf="updateMessage"
+    class="alert alert-success my-4 mx-auto w-50 text-center"
+    role="alert"
+  >
+    {{ updateMessage }}
+  </div>
+
+  <!--Show Loading Spinner When Data is Loading -->
+  <span *ngIf="isLoading" class="loader"></span>
+
+  <a routerLink="/addJob" class="btn btn-success my-4">Create Job</a>
+
+  <!-- Jobs Data -->
+  <div *ngIf="!isLoading" class="table-responsive">
+    <table class="table">
+      <thead>
+        <tr>
+          <th scope="col">#</th>
+          <th scope="col">Title</th>
+          <!-- <th scope="col">Details</th> -->
+          <th scope="col">Open Date</th>
+          <th scope="col">Close Date</th>
+          <th scope="col">Applied</th>
+          <th scope="col">Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <!-- Jobs will be dispayed here paginated -->
+        <tr
+          *ngFor="
+            let job of jobsData
+              | paginate
+                : {
+                    currentPage: currentPage,
+                    itemsPerPage: itemsPerPage,
+                    totalItems: maxSize
+                  };
+            let i = index
+          "
+        >
+          <td>{{ job.id }}</td>
+          <td>{{ job.title }}</td>
+          <!-- <td>{{ job.description }}</td> -->
+          <td>{{ job.start_date | date }}</td>
+          <td>{{ job.end_data | date }}</td>
+          <td>0</td>
+          <td class="d-flex align-items-center gap-2">
+            <button
+              class="btn btn-primary btn-sm"
+              (click)="getJob(job.id)"
+              data-bs-target="#myModal"
+              data-bs-toggle="modal"
+            >
+              <i class="bi bi-pencil"></i>
+            </button>
+            <button (click)="deleteJob(job.id)" class="btn btn-danger btn-sm">
+              <i class="bi bi-trash3"></i>
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+
+    <!-- Bootstrap Model For Editing Jobs -->
+    <div class="modal" id="myModal">
+      <div class="modal-dialog modal-dialog-centered">
+        <div class="modal-content">
+          <div class="modal-header text-center">
+            <h4 class="modal-title">Updating Job</h4>
+            <button
+              type="button"
+              class="btn-close"
+              data-bs-dismiss="modal"
+              aria-label="Close"
+            ></button>
+          </div>
+          <div class="modal-body">
+            <form>
+              <div class="mb-3">
+                <label for="title" class="form-label">Job Title</label>
+                <input
+                  [(ngModel)]="jobToEdit.title"
+                  name="title"
+                  type="text"
+                  id="title"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="description" class="form-label"
+                  >Job Description</label
+                >
+                <textarea
+                  [(ngModel)]="jobToEdit.description"
+                  name="description"
+                  class="form-control"
+                  id="description"
+                  rows="3"
+                ></textarea>
+              </div>
+              <div class="mb-3">
+                <label for="start" class="form-label">Start Date</label>
+                <input
+                  [(ngModel)]="jobToEdit.start_date"
+                  name="start_date"
+                  type="date"
+                  id="start"
+                  class="form-control"
+                />
+              </div>
+              <div class="mb-3">
+                <label for="end" class="form-label">End Date</label>
+                <input
+                  [(ngModel)]="jobToEdit.end_data"
+                  name="end_date"
+                  type="date"
+                  id="end"
+                  class="form-control"
+                />
+              </div>
+            </form>
+          </div>
+          <div class="modal-footer">
+            <button
+              type="button"
+              class="btn btn-secondary"
+              data-bs-dismiss="modal"
+            >
+              Close
+            </button>
+            <button
+              (click)="editJob(jobToEdit.id)"
+              type="submit"
+              class="btn btn-primary"
+              data-bs-dismiss="modal"
+            >
+              Update
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <!-- Pagination Links -->
+  <div *ngIf="!isLoading" class="mx-auto my-4 text-center">
+    <pagination-controls
+      class="my-pagination"
+      (pageChange)="pageChangeEvent($event)"
+    ></pagination-controls>
+  </div>
+</div>
